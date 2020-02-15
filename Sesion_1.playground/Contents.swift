@@ -28,4 +28,4 @@ struct Animal{
 let vocho = Coche(marca: "vw")
 var michi = Animal(nombre: "michi")
 
-// weak, strong, unowned
+// weak, strong, unowned ARC
