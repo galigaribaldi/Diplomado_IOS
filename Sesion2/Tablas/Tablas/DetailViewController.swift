@@ -9,22 +9,26 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
+    var item: String = ""
+    var vc: ViewController?
+    
+    @IBOutlet weak var productName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        productName.text = item
+        //print(vc!.nombres)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func agregar(_ sender: UIButton){
+        vc!.carrito.append(item)
+        vc!.refresh()
+        dismiss(animated: true, completion: nil)
+        
     }
-    */
+    @IBAction func cancelar(_ sender: UIButton){
+        dismiss(animated: true, completion: nil)
+    }
 
 }

@@ -13,6 +13,7 @@
 		667F1AC324018BAE00F337EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667F1AC124018BAE00F337EA /* Main.storyboard */; };
 		667F1AC524018BB000F337EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667F1AC424018BB000F337EA /* Assets.xcassets */; };
 		667F1AC824018BB000F337EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667F1AC624018BB000F337EA /* LaunchScreen.storyboard */; };
+		667F1AD02401A74500F337EA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667F1ACF2401A74500F337EA /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		667F1AC424018BB000F337EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		667F1AC724018BB000F337EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		667F1AC924018BB000F337EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		667F1ACF2401A74500F337EA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				667F1AC424018BB000F337EA /* Assets.xcassets */,
 				667F1AC624018BB000F337EA /* LaunchScreen.storyboard */,
 				667F1AC924018BB000F337EA /* Info.plist */,
+				667F1ACF2401A74500F337EA /* DetailViewController.swift */,
 			);
 			path = Tablas;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				667F1AC024018BAE00F337EA /* ViewController.swift in Sources */,
 				667F1ABC24018BAE00F337EA /* AppDelegate.swift in Sources */,
 				667F1ABE24018BAE00F337EA /* SceneDelegate.swift in Sources */,
+				667F1AD02401A74500F337EA /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
