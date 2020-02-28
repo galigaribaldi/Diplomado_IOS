@@ -35,7 +35,7 @@ class TunesTableTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel.text = "Celda \(indexpath.row)"
+        cell.textLabel?.text = "Celda \(indexPath.row)"
         return cell
     }
 
