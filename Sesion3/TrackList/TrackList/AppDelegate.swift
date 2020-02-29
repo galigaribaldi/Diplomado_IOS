@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  iTunes
+//  TrackList
 //
 //  Created by Hernán Galileo Cabrera Garibaldi on 28/02/20.
 //  Copyright © 2020 galios. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 
 @UIApplicationMain
-    class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 

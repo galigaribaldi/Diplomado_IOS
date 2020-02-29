@@ -1,6 +1,6 @@
 //
-//  TunesTableTableViewController.swift
-//  iTunes
+//  TracksTableViewController.swift
+//  TrackList
 //
 //  Created by Hernán Galileo Cabrera Garibaldi on 28/02/20.
 //  Copyright © 2020 galios. All rights reserved.
@@ -8,8 +8,11 @@
 
 import UIKit
 
-class TunesTableTableViewController: UITableViewController {
-
+class TracksTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    var tracks: [Track] = []
+    let searchBarController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +21,16 @@ class TunesTableTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.searchController = searchBarController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        searchBarController.dimsBackgroundDuringPresentation = true
+        
+        searchBarController.searchBar.delegate = self
+        
+        getTracks(cadena: "")
     }
 
     // MARK: - Table view data source
@@ -29,15 +42,19 @@ class TunesTableTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return tracks.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
-        cell.textLabel?.text = "Celda \(indexPath.row)"
+
+        let track = tracks[indexPath.row]
+        cell.textLabel?.text = track.trackName
+
         return cell
     }
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -47,17 +64,17 @@ class TunesTableTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("Algo paso ")
-           // tableView.deleteRows(at: [indexPath], with: .fade)
-        } //else if editingStyle == .insert {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        //}
+        }    
     }
-    
+    */
 
     /*
     // Override to support rearranging the table view.
@@ -83,36 +100,40 @@ class TunesTableTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+       func getTracks(cadena : String){
+            let url = URL(string:  "https://itunes.apple.com/search?term=maluma")
 
-    
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let accionOne = UIContextualAction(style: .normal, title: "Action 1") { (action, sourceView, completionHandler) in
-            print("Ejecuto la accion 1")
-            completionHandler(true)
-        }
-        
-        let accionTwo = UIContextualAction(style: .normal, title: "Action 1") { (action, sourceView, completionHandler) in
-            print("Ejecuto la accion 2")
-            completionHandler(true)
-        }
-        accionOne.backgroundColor = .cyan
-        accionTwo.backgroundColor = .blue
-        accionTwo.image = UIImage(systemName: "play")
-        
-        let swipeConfiguration = UISwipeActionsConfiguration(actions: [accionOne, accionTwo])
-        return swipeConfiguration
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alertController = UIAlertController(title: "Seleccion un godin", message: "Usted ha seleccionado a un buen godin", preferredStyle: .actionSheet)
+            let jsonDecoder = JSONDecoder()
+
+            //singleton con shared y no ocupar mas de una referencia a la vez
+            let task = URLSession.shared.dataTask(with: url!) { (data, responde, error) in
+
                 
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        
-        present(alertController, animated: true)
+                if (error != nil){
+                    print(error?.localizedDescription)
+                }
+                
+                if let data = data, let tracksList = try? jsonDecoder.decode(ResultSearch.self , from : data) {
+                    for track in tracksList.results{
+                        print(track.trackName)
+                    }
+                    
+                    self.tracks = tracksList.results
+                    //Para no tener que acer una accion (Forma asincrona)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                 
+                }
+            }
+
+            task.resume()
+        }
+
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            if searchText.count > 4{
+                getTracks(cadena: searchText)
+            }
+        }
     }
-}
