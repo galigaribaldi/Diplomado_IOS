@@ -27,6 +27,20 @@ class ViewController: UIViewController {
         playButton.setImage(UIImage(named:"play"), for: .normal)
     }
     
+    func loadImage(){
+        
+        guard let url = URL(string: urlImage) else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            print("Descargando la imagen", data)
+            guard let dataImage = data else { return }
+            
+            DispatchQueue.main.async {
+                self.portada.image = UIImage(data: dataImage)
+            }
+        }.resume()
+    }
+
+    
     @IBAction func playEpisode(_ sender: UIButton){
         
         if status == "none"{
