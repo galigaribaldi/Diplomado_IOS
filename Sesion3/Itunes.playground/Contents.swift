@@ -10,7 +10,7 @@ struct Track: Codable{
     var artistName: String
 }
 //Hacer una solicitud a una peticion e inyectar los datos
-let url = URL(string: "https://itunes.apple.com/search?term=pink%20floyd")
+let url = URL(string: "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=f5f95f453e6441b3a8455b8cd2b4210c&tags=mexico&format=json&nojsoncallback=1")
 //let url = URL(string: "https://www.unam.mx")
 let jsonDecoder = JSONDecoder()
 

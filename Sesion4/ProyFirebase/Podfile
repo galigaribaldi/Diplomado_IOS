@@ -8,5 +8,6 @@ target 'ProyFirebase' do
   # Pods for ProyFirebase
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
 
 end

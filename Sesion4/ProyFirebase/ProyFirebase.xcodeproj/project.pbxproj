@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,9 @@
 		667B595C241332CA008D4B0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667B595B241332CA008D4B0C /* Assets.xcassets */; };
 		667B595F241332CA008D4B0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 667B595D241332CA008D4B0C /* LaunchScreen.storyboard */; };
 		667B596724133903008D4B0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 667B596624133903008D4B0C /* GoogleService-Info.plist */; };
+		66E0B29D2414121100EC68F7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E0B29C2414121100EC68F7 /* LoginViewController.swift */; };
+		66E0B29F241416C200EC68F7 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E0B29E241416C200EC68F7 /* MainViewController.swift */; };
+		66E0B2A124141FC700EC68F7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E0B2A024141FC700EC68F7 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		667B595E241332CA008D4B0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		667B5960241332CA008D4B0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		667B596624133903008D4B0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66E0B29C2414121100EC68F7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		66E0B29E241416C200EC68F7 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		66E0B2A024141FC700EC68F7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		84AED6B6005D493D42C1E537 /* Pods-ProyFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyFirebase.debug.xcconfig"; path = "Target Support Files/Pods-ProyFirebase/Pods-ProyFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		E81C015CD7189A4F00B031A3 /* Pods-ProyFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProyFirebase.release.xcconfig"; path = "Target Support Files/Pods-ProyFirebase/Pods-ProyFirebase.release.xcconfig"; sourceTree = "<group>"; };
 		FDE1E3D6C874335D25BB3ECC /* Pods_ProyFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProyFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +56,6 @@
 				84AED6B6005D493D42C1E537 /* Pods-ProyFirebase.debug.xcconfig */,
 				E81C015CD7189A4F00B031A3 /* Pods-ProyFirebase.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,6 +88,9 @@
 				667B595D241332CA008D4B0C /* LaunchScreen.storyboard */,
 				667B596624133903008D4B0C /* GoogleService-Info.plist */,
 				667B5960241332CA008D4B0C /* Info.plist */,
+				66E0B29C2414121100EC68F7 /* LoginViewController.swift */,
+				66E0B29E241416C200EC68F7 /* MainViewController.swift */,
+				66E0B2A024141FC700EC68F7 /* WelcomeViewController.swift */,
 			);
 			path = ProyFirebase;
 			sourceTree = "<group>";
@@ -211,9 +219,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E0B29D2414121100EC68F7 /* LoginViewController.swift in Sources */,
 				667B5957241332C8008D4B0C /* ViewController.swift in Sources */,
 				667B5953241332C8008D4B0C /* AppDelegate.swift in Sources */,
+				66E0B2A124141FC700EC68F7 /* WelcomeViewController.swift in Sources */,
 				667B5955241332C8008D4B0C /* SceneDelegate.swift in Sources */,
+				66E0B29F241416C200EC68F7 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
