@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5CB4EA4A25F5CDCF6C64B397 /* Pods_ProyFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDE1E3D6C874335D25BB3ECC /* Pods_ProyFirebase.framework */; };
+		661EF190241C453A0080DDAD /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661EF18F241C453A0080DDAD /* CentralViewController.swift */; };
+		661EF192241C47270080DDAD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661EF191241C47270080DDAD /* ProfileViewController.swift */; };
+		661EF194241C77AE0080DDAD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661EF193241C77AE0080DDAD /* Model.swift */; };
+		661EF196241C78720080DDAD /* PhotoCollectionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661EF195241C78720080DDAD /* PhotoCollectionCollectionViewController.swift */; };
 		667B5953241332C8008D4B0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B5952241332C8008D4B0C /* AppDelegate.swift */; };
 		667B5955241332C8008D4B0C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B5954241332C8008D4B0C /* SceneDelegate.swift */; };
 		667B5957241332C8008D4B0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667B5956241332C8008D4B0C /* ViewController.swift */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		661EF18F241C453A0080DDAD /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
+		661EF191241C47270080DDAD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		661EF193241C77AE0080DDAD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		661EF195241C78720080DDAD /* PhotoCollectionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionCollectionViewController.swift; sourceTree = "<group>"; };
 		667B594F241332C8008D4B0C /* ProyFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProyFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667B5952241332C8008D4B0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		667B5954241332C8008D4B0C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +99,10 @@
 				66E0B29C2414121100EC68F7 /* LoginViewController.swift */,
 				66E0B29E241416C200EC68F7 /* MainViewController.swift */,
 				66E0B2A024141FC700EC68F7 /* WelcomeViewController.swift */,
+				661EF18F241C453A0080DDAD /* CentralViewController.swift */,
+				661EF191241C47270080DDAD /* ProfileViewController.swift */,
+				661EF193241C77AE0080DDAD /* Model.swift */,
+				661EF195241C78720080DDAD /* PhotoCollectionCollectionViewController.swift */,
 			);
 			path = ProyFirebase;
 			sourceTree = "<group>";
@@ -115,6 +127,7 @@
 				667B594C241332C8008D4B0C /* Frameworks */,
 				667B594D241332C8008D4B0C /* Resources */,
 				2803BBBE1B672345158A12B7 /* [CP] Embed Pods Frameworks */,
+				9B9385B869AEF5485542F29C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -212,6 +225,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9B9385B869AEF5485542F29C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProyFirebase/Pods-ProyFirebase-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProyFirebase/Pods-ProyFirebase-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProyFirebase/Pods-ProyFirebase-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -219,11 +249,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				661EF194241C77AE0080DDAD /* Model.swift in Sources */,
+				661EF196241C78720080DDAD /* PhotoCollectionCollectionViewController.swift in Sources */,
 				66E0B29D2414121100EC68F7 /* LoginViewController.swift in Sources */,
 				667B5957241332C8008D4B0C /* ViewController.swift in Sources */,
 				667B5953241332C8008D4B0C /* AppDelegate.swift in Sources */,
+				661EF190241C453A0080DDAD /* CentralViewController.swift in Sources */,
 				66E0B2A124141FC700EC68F7 /* WelcomeViewController.swift in Sources */,
 				667B5955241332C8008D4B0C /* SceneDelegate.swift in Sources */,
+				661EF192241C47270080DDAD /* ProfileViewController.swift in Sources */,
 				66E0B29F241416C200EC68F7 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

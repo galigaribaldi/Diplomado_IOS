@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
