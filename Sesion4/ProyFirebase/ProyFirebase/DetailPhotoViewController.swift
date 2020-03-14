@@ -7,22 +7,25 @@
 //
 
 import UIKit
+import FirebaseStorage
+import FirebaseUI
 class DetailPhotoViewController: UIViewController{
     //let width: Int = 0
     var imagen: UIImage! = nil
     var selector: UIImage! = nil
+    var userID: String!
     let photoView: UIImageView = {
         let pv = UIImageView(frame: CGRect(x: 8, y: 8, width: 300, height: 300))
         return pv
     }()
     
     ////
-    /*
+    
     let favoriteView: UIImageView = {
         let pf = UIImageView(frame: CGRect(x: 8, y: 10, width: 300, height: 300))
         return pf
     }()
-    */
+
     
     let saveButton: UIButton = {
         let b = UIButton(type: .system)
@@ -57,7 +60,38 @@ class DetailPhotoViewController: UIViewController{
         //
         favoriteButton.topAnchor.constraint(equalTo: saveButton.bottomAnchor, constant: 10).isActive = true
         favoriteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        
+        //Obtener el ID del usuario
+        Auth.auth().addStateDidChangeListener{ (auth, user) in
+            self.userID = user?.uid
+            print(self.userID)
+            if user == nil{
+                print("Usuario No Logeado")
+            } else{
+                self.userID = user?.uid
+                print(self.userID)
+
+                //self.nameLabel.text = user?.las
+            }
+        }
     }
+    
+    //////
+    func saveFavorite(_ imageData: Data){
+        
+        let storageReference = Storage.storage().reference()
+        let userImageRef = storageReference.child("/sub").child(userID)
+        let uploadMetadata = StorageMetadata()
+        uploadMetadata.contentType = "image/jpeg"
+        userImageRef.putData(imageData, metadata: uploadMetadata) { (StorageMetadata, error) in
+            if let error = error{
+                print("Error: ", error.localizedDescription)
+            }else{
+                print(StorageMetadata?.path)
+            }
+        }
+    }
+    /////
     
     @objc func savePhoto(){
         print("Sav save :v ")
@@ -71,5 +105,24 @@ class DetailPhotoViewController: UIViewController{
     }
     @objc func agregarF(){
         print("Favoritos")
+        guard let favorit = photoView.image else { return }
+                let optimizedImageData = favorit.jpegData(compressionQuality: 0.6)
+                self.saveImage(optimizedImageData!)
     }
+        
+        func saveImage(_ imageData: Data){
+            let storageReference = Storage.storage().reference()
+            let userImageRef = storageReference.child("/photos").child(userID).child(UUID().uuidString) //
+            let uploadMetadata = StorageMetadata()
+            uploadMetadata.contentType = "image/jpeg"
+            userImageRef.putData(imageData, metadata: uploadMetadata) { (StorageMetadata, error) in
+                if let error = error{
+                    print("Error: ", error.localizedDescription)
+                }else{
+                    print(StorageMetadata?.path)
+                }
+            }
+        }
+        
 }
+

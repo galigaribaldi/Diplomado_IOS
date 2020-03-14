@@ -89,6 +89,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         dismiss(animated: true, completion: nil)
     }
+    
     func saveImage(_ imageData: Data){
         let activityIndicator = UIActivityIndicatorView.init(style: .large)
         activityIndicator.color = .red
@@ -108,5 +109,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
     }
+
     
 }
