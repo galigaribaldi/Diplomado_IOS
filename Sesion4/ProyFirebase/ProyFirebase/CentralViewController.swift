@@ -19,17 +19,22 @@ class CentralViewController: UITabBarController{ //Barra blanca que aparece abaj
         ProfileController!.tabBarItem.title = "Perfil"
         ProfileController!.tabBarItem.image = UIImage(systemName: "person.fill")
         
-        let PhotosController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PhotoCollectionViewController") as? PhotoCollectionCollectionViewController
+        guard let PhotosControllerTemp = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "PhotoCollectionViewController") as? PhotoCollectionCollectionViewController else { return }
+        let PhotosController = UINavigationController(rootViewController: PhotosControllerTemp)
         
-        PhotosController!.tabBarItem.title = "Fotos"
-        PhotosController!.tabBarItem.image = UIImage(systemName: "doc.richtext")
+        PhotosController.tabBarItem.title = "Fotos"
+        PhotosController.tabBarItem.image = UIImage(systemName: "doc.richtext")
+        /*
+        guard let  PhotosControllerTemp = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ProfileViewController") as? ProfileViewController else { return })
         
+        let PhotosController = UINavigationController(rootViewController: ProfileController()
+        */
         let SaveController = UINavigationController(rootViewController: ProfileViewController())
         SaveController.tabBarItem.title = "Favoritos"
         SaveController.tabBarItem.image = UIImage(systemName: "tray.and.arrow.down.fill")
         viewControllers = [
             ProfileController!,
-            PhotosController!,
+            PhotosController,
             SaveController
         ]
     }

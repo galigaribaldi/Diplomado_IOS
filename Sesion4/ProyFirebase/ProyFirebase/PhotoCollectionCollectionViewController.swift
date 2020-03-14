@@ -21,7 +21,11 @@ class PhotoCollectionCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        //collectionView.collectionViewLayout = self
+        
+        collectionView.delegate = self
         getPhotos()
         // Do any additional setup after loading the view.
     }
@@ -49,46 +53,40 @@ class PhotoCollectionCollectionViewController: UICollectionViewController {
         return urlList.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        cell.backgroundColor = .blue
-    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> PhotoCollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoCollectionViewCell
+        
+        
+        let url = urlList[indexPath.item]
+        let urlPhoto = URL(string: url)
+        
+        //cell.backgroundColor = .blue
+        cell.photoView.image = UIImage(named: "Wii")
+        
+        URLSession.shared.dataTask(with: urlPhoto!) { (data, _, _) in
+            guard let data = data else{
+                cell.photoView.image = UIImage(named: "Wii")
+                return
+            }
+            DispatchQueue.main.async {
+                cell.photoView.image = UIImage(data: data)
+            }
+        }.resume()
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        //let detailView = DetailPhotoViewController()
+        //navigationController?.pushViewController(detailView, animated: true)
+        //present(detailView, animated: true)
+        let cell = collectionView.cellForItem(at: indexPath) as! PhotoCollectionViewCell
+        
+        let detailView = DetailPhotoViewController()
+        detailView.imagen = cell.photoView.image
+        navigationController?.pushViewController(detailView, animated: true)
     }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     func getPhotos(){
-        let urlFlickr = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=ca8aa2ae5c208b3e28e2dd5ada0f1407&tags=mexico&format=json&nojsoncallback=1"
+        let urlFlickr = "https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=f5f95f453e6441b3a8455b8cd2b4210c&tags=pink%20floyd&format=json&nojsoncallback=1"
         
         let url = URL(string: urlFlickr)
         
@@ -115,4 +113,14 @@ class PhotoCollectionCollectionViewController: UICollectionViewController {
         }.resume()
     }
 
+}
+
+//Extender la funcionalidad sin reescribir lel codigo de arriba y ahcer que no se ea tan revuleto
+extension PhotoCollectionCollectionViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
 }

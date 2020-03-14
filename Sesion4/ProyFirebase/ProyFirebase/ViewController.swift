@@ -40,7 +40,6 @@ class ViewController: UIViewController {
             self.storeUser(uid: (user?.user.uid)!, name: name, lastname: lastname)
         }
     }
-    
     @IBAction func cancel(_ sender: UIButton){
             dismiss(animated: true, completion: nil)
 
